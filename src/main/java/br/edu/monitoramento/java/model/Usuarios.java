@@ -1,4 +1,4 @@
-package br.edu.monitoramento.java.sistema_monitoramento_ambiental.model;
+package br.edu.monitoramento.java.model;
 
 import jakarta.persistence.*;
 

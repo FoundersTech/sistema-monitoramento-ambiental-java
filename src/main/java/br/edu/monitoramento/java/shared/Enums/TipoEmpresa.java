@@ -1,4 +1,4 @@
-package br.edu.monitoramento.java.sistema_monitoramento_ambiental.shared.Enums;
+package br.edu.monitoramento.java.shared.Enums;
 
 public enum TipoEmpresa {
     INDUSTRIAL,

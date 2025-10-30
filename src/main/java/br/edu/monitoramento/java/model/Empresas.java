@@ -1,6 +1,6 @@
-package br.edu.monitoramento.java.sistema_monitoramento_ambiental.model;
+package br.edu.monitoramento.java.model;
 
-import br.edu.monitoramento.java.sistema_monitoramento_ambiental.shared.Enums.TipoEmpresa;
+import br.edu.monitoramento.java.shared.Enums.TipoEmpresa;
 import jakarta.persistence.*;
 
 import java.util.Date;

@@ -1,4 +1,4 @@
-package br.edu.monitoramento.java.sistema_monitoramento_ambiental;
+package br.edu.monitoramento.java;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
