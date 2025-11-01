@@ -2,10 +2,16 @@ package br.edu.monitoramento.java.model;
 
 import br.edu.monitoramento.java.shared.Enums.TipoEmpresa;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "empresas")
 public class Empresas {

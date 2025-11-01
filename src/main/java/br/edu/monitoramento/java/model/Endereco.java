@@ -3,7 +3,13 @@ package br.edu.monitoramento.java.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "enderecos")
 public class Endereco {
