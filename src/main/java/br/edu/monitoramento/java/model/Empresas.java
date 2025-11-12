@@ -1,6 +1,7 @@
 package br.edu.monitoramento.java.model;
 
 import br.edu.monitoramento.java.shared.Enums.TipoEmpresa;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,14 +22,16 @@ public class Empresas {
 
     @OneToOne
     @JoinColumn(name = "id_endereco")
+    @JsonManagedReference
     private Endereco endereco;
 
     @OneToMany(mappedBy = "empresa")
+    @JsonManagedReference("empresa-dados")
     private List<DadosClimaticos> dadosClimaticos;
 
-    @OneToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuarios usuario;
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+    @JsonManagedReference("empresa-usuarios")
+    private List<Usuarios> usuarios;
 
     @Column(length = 18, unique = true, nullable = false)
     public String cnpjEmpresa;

@@ -1,8 +1,12 @@
 package br.edu.monitoramento.java.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +22,12 @@ public class Endereco {
     private int id;
 
     @OneToOne(mappedBy = "endereco")
+    @JsonBackReference
     public Empresas empresa;
+
+    @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Sensor> sensores;
 
     public String rua;
     public String cidade;
