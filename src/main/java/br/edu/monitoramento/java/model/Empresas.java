@@ -1,6 +1,8 @@
 package br.edu.monitoramento.java.model;
 
 import br.edu.monitoramento.java.shared.Enums.TipoEmpresa;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,11 +28,11 @@ public class Empresas {
     private Endereco endereco;
 
     @OneToMany(mappedBy = "empresa")
-    @JsonManagedReference("empresa-dados")
+    @JsonIgnore
     private List<DadosClimaticos> dadosClimaticos;
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-    @JsonManagedReference("empresa-usuarios")
+    @JsonBackReference("empresa-usuarios")
     private List<Usuarios> usuarios;
 
     @Column(length = 18, unique = true, nullable = false)

@@ -26,7 +26,7 @@ public class Endereco {
     public Empresas empresa;
 
     @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonBackReference("sensor-endereco")
     private List<Sensor> sensores;
 
     public String rua;

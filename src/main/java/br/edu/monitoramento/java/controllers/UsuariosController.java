@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/usuarios")
 public class UsuariosController {
@@ -27,6 +29,18 @@ public class UsuariosController {
         } catch (RuntimeException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Usuarios>> buscarTodos(){
+        List<Usuarios> usuarios = usuariosService.buscarTodos();
+        return new ResponseEntity<>(usuarios, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable int id) {
+        Usuarios usuario = usuariosService.buscarPorId(id);
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 }
 

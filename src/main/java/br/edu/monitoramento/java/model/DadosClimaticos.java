@@ -1,6 +1,7 @@
 package br.edu.monitoramento.java.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +21,7 @@ public class DadosClimaticos {
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", nullable = false)
-    @JsonBackReference("empresa-dados")
+    @JsonIgnore
     public Empresas empresa;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,6 +33,10 @@ public class DadosClimaticos {
     public float temperatura;
     public float umidade;
     public String periodoColeta;
-    public String localColeta;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "endereco_coleta_id")
+    private Endereco localColeta;
+
     public Date criadoEm;
 }

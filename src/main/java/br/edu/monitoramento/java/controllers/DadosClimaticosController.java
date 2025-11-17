@@ -1,13 +1,12 @@
 package br.edu.monitoramento.java.controllers;
 
+import br.edu.monitoramento.java.dto.DadosClimaticosDTO;
 import br.edu.monitoramento.java.model.DadosClimaticos;
 import br.edu.monitoramento.java.service.DadosClimaticosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -31,5 +30,14 @@ public class DadosClimaticosController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(dados);
+    }
+
+    @PostMapping
+    public ResponseEntity<DadosClimaticos> criar(@RequestBody DadosClimaticosDTO dto, UriComponentsBuilder uriBuilder) {
+        DadosClimaticos salvo = dadosClimaticosService.salvarDTO(dto);
+        return ResponseEntity
+                .created(uriBuilder.path("/dados-climaticos/{id}")
+                        .buildAndExpand(salvo.getId()).toUri())
+                .body(salvo);
     }
 }

@@ -22,9 +22,9 @@ public class Sensor {
 
     private String modelo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "endereco_id")
-    @JsonBackReference("sensor-endereco")
+    @JsonManagedReference("sensor-endereco")
     private Endereco endereco;
 
     @ManyToOne(fetch = FetchType.LAZY)
